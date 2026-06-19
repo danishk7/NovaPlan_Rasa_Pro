@@ -309,7 +309,7 @@ When `APP_ENV=TEST`, the Hugging Face backend generates structured test evidence
 
 These endpoints return `404` unless `APP_ENV=TEST`.
 
-## Examiner Notes
+## Important Notes
 
 - Use the live Firebase link for the main user journey.
 - Use the Hugging Face `/docs` page for API inspection if `ENABLE_API_DOCS=true`.
