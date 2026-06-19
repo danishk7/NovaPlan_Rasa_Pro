@@ -1,0 +1,3 @@
+# In Docker Compose use http://actions:5055/webhook; monolith uses 127.0.0.1
+action_endpoint:
+  url: "http://127.0.0.1:5055/webhook"

@@ -1,0 +1,518 @@
+version: "3.1"
+
+nlu:
+
+# ─────────────────────────────────────────────────────────────────────────────
+# greet — 15 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - good morning
+    - good afternoon
+    - hey there
+    - howdy
+    - hiya
+    - greetings
+    - morning!
+    - hello novaplan
+    - hi, I need travel help
+    - hey novaplan
+    - good evening
+    - hi there
+    - yo
+
+# ─────────────────────────────────────────────────────────────────────────────
+# goodbye — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you later
+    - take care
+    - thanks bye
+    - ciao
+    - good night
+    - I'm done, bye
+    - finished for now
+    - goodbye for now
+    - nothing else, bye
+    - all done, thanks
+
+# ─────────────────────────────────────────────────────────────────────────────
+# book_trip — 15 diverse examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: book_trip
+  examples: |
+    - I want to plan a [sustainable](eco_level) city break to [Amsterdam](destination) on [15-20 June](travel_dates) with a budget of [1000](budget_amount) euros
+    - help me create an [eco](eco_level) itinerary to [Barcelona](destination) from [Berlin](origin) for [next weekend](travel_dates)
+    - plan a [green](eco_level) holiday for me in [Paris](destination) from [London](origin) on [early July](travel_dates), budget is [1500](budget_amount) euros
+    - I want to book a trip from [Berlin](origin) to [Amsterdam](destination) on [15-20 June](travel_dates) using [train](transport_mode)
+    - book a trip for me from [Paris](origin) to [Tokyo](destination) in [early July](travel_dates)
+    - plan me an eco-friendly vacation to [Rome](destination) from [Madrid](origin) for [3](num_travellers) people
+    - I need to plan travel to [Vienna](destination) from [Prague](origin) for [2](num_travellers) travellers
+    - help me book an environmentally friendly trip to [Lisbon](destination) from [London](origin) in [July](travel_dates)
+    - I want a carbon-neutral holiday from [Paris](origin) to [Copenhagen](destination) for [Christmas week](travel_dates)
+    - sustainable trip planning please to [Edinburgh](destination) from [Amsterdam](origin) next month
+    - I want to travel to [Porto](destination) from [Berlin](origin) with a budget of [1000](budget_amount) euros
+    - let's plan a trip to [Copenhagen](destination) from [Stockholm](origin) for [10 days in September](travel_dates)
+    - can you help me plan an eco tour from [Florence](origin) to [Athens](destination) for [June](travel_dates)
+    - I want to go on a sustainable journey to [Seville](destination) from [Munich](origin) this summer
+    - plan a low-carbon trip for me to [Barcelona](destination) from [Rome](origin) in [August](travel_dates)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# provide_destination — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: provide_destination
+  examples: |
+    - I want to go to [Amsterdam](destination)
+    - my destination is [Lisbon](destination)
+    - travelling to [Barcelona](destination)
+    - I'm going to [Rome](destination)
+    - destination is [Prague](destination)
+    - heading to [Vienna](destination)
+    - going to [Edinburgh](destination)
+    - destination [Dubrovnik](destination)
+    - I'm travelling to [Porto](destination)
+    - I want to visit [Bruges](destination)
+    - to [Paris](destination)
+    - let's go to [Tallinn](destination)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# provide_origin — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: provide_origin
+  examples: |
+    - I'm travelling from [Berlin](origin)
+    - departing from [London](origin)
+    - I'll be leaving from [Munich](origin)
+    - starting from [Amsterdam](origin)
+    - coming from [Madrid](origin)
+    - my origin is [Rome](origin)
+    - flying out from [Vienna](origin)
+    - leaving [Brussels](origin)
+    - from [Stockholm](origin)
+    - I'm based in [Warsaw](origin)
+    - origin is [Dublin](origin)
+    - travelling from [Paris](origin)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# provide_dates — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: provide_dates
+  examples: |
+    - I want to go on [15-20 June](travel_dates)
+    - travelling [next weekend](travel_dates)
+    - dates are [July 10 to July 17](travel_dates)
+    - I'm planning to travel in [August](travel_dates)
+    - leaving [25 June](travel_dates) returning [2 July](travel_dates)
+    - the [weekend of 14 June](travel_dates)
+    - [10 days in September](travel_dates)
+    - going [next month](travel_dates)
+    - planning for [Christmas week](travel_dates)
+    - dates: [1-8 August](travel_dates)
+    - travel dates are [June 15 to June 22](travel_dates)
+    - going from [12 to 19 July](travel_dates)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# provide_budget — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: provide_budget
+  examples: |
+    - my budget is [500](budget_amount) euros
+    - I have about [1000](budget_amount) EUR to spend
+    - budget is [1500](budget_amount)
+    - I can spend up to [2000](budget_amount) euros
+    - around [800](budget_amount)
+    - approximately [3000](budget_amount) EUR
+    - under [1000](budget_amount)
+    - maximum [2500](budget_amount)
+    - about [600](budget_amount) euros
+    - I have [4000](budget_amount) EUR
+    - I can afford [1800](budget_amount) euros
+    - My budget is about [400](budget_amount) euros
+
+# ─────────────────────────────────────────────────────────────────────────────
+# provide_eco_level — 15 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: provide_eco_level
+  examples: |
+    - I want maximum sustainability
+    - make it as green as possible
+    - I'm very eco conscious
+    - eco level is [high](eco_level)
+    - sustainability is [high](eco_level) priority
+    - I want a [moderately](eco_level) eco-friendly trip
+    - [moderate](eco_level) sustainability
+    - just a [little greener](eco_level) please
+    - [low](eco_level) priority for sustainability
+    - I care a bit about eco
+    - prioritise green options
+    - I'm flexible on sustainability
+    - [low eco level](eco_level) please
+    - [moderate eco level](eco_level) please
+    - [high eco level](eco_level) please
+
+# ─────────────────────────────────────────────────────────────────────────────
+# provide_transport_mode — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: provide_transport_mode
+  examples: |
+    - I want to travel by [train](transport_mode)
+    - let's go by [bus](transport_mode)
+    - travelling by [car](transport_mode)
+    - travel via [flight](transport_mode)
+    - I want to [fly](transport_mode)
+    - go by [plane](transport_mode)
+    - [train](transport_mode) please
+    - [ferry](transport_mode)
+    - travel by [public transport](transport_mode)
+    - [walking](transport_mode)
+    - I prefer taking the [bus](transport_mode)
+    - can we go by [ferry](transport_mode)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# provide_num_travellers — 10 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: provide_num_travellers
+  examples: |
+    - I'm travelling with [2](num_travellers) people
+    - there will be [4](num_travellers) of us
+    - we are a group of [3](num_travellers)
+    - just me, so [1](num_travellers) traveller
+    - travelling with [5](num_travellers) friends
+    - I want to book for [6](num_travellers) people
+    - [2](num_travellers) of us
+    - with [3](num_travellers) people
+    - only [1](num_travellers)
+    - group of [4](num_travellers)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# request_carbon_info — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: request_carbon_info
+  examples: |
+    - how much CO2 for a [flight](transport_mode) from [Berlin](origin) to [Lisbon](destination)
+    - emissions for [train](transport_mode) from [London](origin) to [Paris](destination)
+    - carbon footprint for my [flight](transport_mode) from [Paris](origin) to [Rome](destination)
+    - calculate emissions for [car](transport_mode) from [Paris](origin) to [Rome](destination)
+    - what is the carbon footprint of flying from [London](origin) to [Berlin](destination)
+    - carbon info for my [train](transport_mode) journey
+    - how much CO2 for a [bus](transport_mode) from [Amsterdam](origin) to [Berlin](destination)
+    - CO2 emissions for [ferry](transport_mode) from [Barcelona](origin) to [Copenhagen](destination)
+    - emissions for a [flight](transport_mode) from [Rome](origin) to [Prague](destination)
+    - what are emissions for travelling by [car](transport_mode)
+    - carbon footprint from [Stockholm](origin) to [Oslo](destination)
+    - show me the carbon impact of my journey
+
+# ─────────────────────────────────────────────────────────────────────────────
+# request_eco_hotels — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: request_eco_hotels
+  examples: |
+    - find eco hotels in [Amsterdam](destination)
+    - hotels in [Amsterdam](destination) under [1000](budget_amount) euros
+    - show green hotels for [Lisbon](destination)
+    - sustainable accommodation in [Barcelona](destination) below [900](budget_amount) euros
+    - eco-friendly hotels in [Rome](destination) for [1500](budget_amount) EUR
+    - green certified hotels in [Prague](destination)
+    - environmentally friendly hotels in [Vienna](destination)
+    - I need eco hotels in [Copenhagen](destination)
+    - sustainable places to stay in [Berlin](destination)
+    - green accommodation in [Paris](destination) under [800](budget_amount)
+    - eco lodging in [Edinburgh](destination)
+    - hotels with green certification in [Budapest](destination)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# request_transport_options — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: request_transport_options
+  examples: |
+    - train options from [Berlin](origin) to [Paris](destination)
+    - bus options from [Amsterdam](origin) to [Brussels](destination)
+    - is there a direct train from [London](origin) to [Paris](destination)
+    - walking route from [Paris](origin) to [Brussels](destination)
+    - what transport is available from [Berlin](origin) to [Vienna](destination)
+    - how can I get from [London](origin) to [Amsterdam](destination) sustainably
+    - green transport from [Stockholm](origin) to [Oslo](destination)
+    - what are my travel options from [Rome](origin) to [Naples](destination)
+    - low carbon transport from [Madrid](origin) to [Lisbon](destination)
+    - ferry options from [Dover](origin) to [Calais](destination)
+    - show me eco transport from [Munich](origin) to [Zurich](destination)
+    - compare travel modes from [Berlin](origin) to [Prague](destination)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# request_cultural_info — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: request_cultural_info
+  examples: |
+    - cultural info for [Japan](destination)
+    - country information for [Amsterdam](destination)
+    - local customs in [Barcelona](destination)
+    - what should I know about visiting [Tokyo](destination)
+    - give me cultural tips for [Lisbon](destination)
+    - what should I know before visiting [Rome](destination)
+    - cultural advice for [Prague](destination)
+    - local customs in [Vienna](destination)
+    - what are local customs in [Copenhagen](destination)
+    - cultural information for [Edinburgh](destination)
+    - responsible tourism tips for [Dubrovnik](destination)
+    - tell me about the culture in [Budapest](destination)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# request_eco_tips — 10 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: request_eco_tips
+  examples: |
+    - responsible tourism tips please
+    - how to be a responsible tourist
+    - sustainable travel advice
+    - eco travel recommendations
+    - how can I travel more sustainably
+    - give me green travel tips
+    - how to reduce my carbon footprint while travelling
+    - sustainability tips for my trip
+    - eco-friendly travel ideas
+    - carbon reduction tips for travellers
+
+# ─────────────────────────────────────────────────────────────────────────────
+# request_activities — 10 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: request_activities
+  examples: |
+    - what eco activities are available there
+    - local eco experiences please
+    - what's there to do that's sustainable
+    - eco-friendly activities in the area
+    - what are the local eco attractions
+    - local conservation activities
+    - what can I do there
+    - sustainable sightseeing ideas
+    - things to do in an eco-friendly way
+    - green activities near my destination
+
+# ─────────────────────────────────────────────────────────────────────────────
+# request_offset_programs — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: request_offset_programs
+  examples: |
+    - how can I offset my carbon emissions
+    - show me carbon offset programs
+    - I want to offset my flight emissions
+    - what are the best carbon offsetting options
+    - how do I become carbon neutral for this trip
+    - offset programs available
+    - I want to plant trees for my emissions
+    - what are verified offset schemes
+    - show me carbon offset projects
+    - offset this journey
+    - offset my carbon footprint
+    - offset the emissions from [Berlin](origin) to [Lisbon](destination)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# confirm_itinerary — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: confirm_itinerary
+  examples: |
+    - confirm itinerary
+    - complete my itinerary
+    - finalize the trip
+    - save my itinerary
+    - I'm finished planning
+    - all done
+    - create itinerary
+    - save itinerary now
+    - yes book it
+    - confirm and book
+    - sounds good, confirm
+    - proceed with booking
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# escalate_to_human — 12 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: escalate_to_human
+  examples: |
+    - I want to speak to a human
+    - connect me to a travel agent
+    - can I talk to a person
+    - I need human assistance
+    - speak to a real person please
+    - escalate this please
+    - I want to talk to someone
+    - connect me to an advisor
+    - transfer to agent
+    - I want to speak with a travel specialist
+    - this is too complex I need a person
+    - please escalate to human
+
+# ─────────────────────────────────────────────────────────────────────────────
+# start_over — 10 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: start_over
+  examples: |
+    - start over
+    - let's start again
+    - restart please
+    - I want to begin again
+    - clear everything
+    - reset
+    - start from scratch
+    - forget what I said
+    - cancel and restart
+    - new trip please
+
+# ─────────────────────────────────────────────────────────────────────────────
+# modify intents — 8 examples each
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: modify_destination
+  examples: |
+    - actually I want to go to [Paris](destination)
+    - change destination to [Rome](destination)
+    - I'd prefer [London](destination)
+    - let me go to [Amsterdam](destination) instead
+    - update destination to [Lisbon](destination)
+    - change of plans, I want to go to [Barcelona](destination)
+    - different destination please, maybe [Vienna](destination)
+    - I want to visit [Prague](destination) instead
+
+- intent: modify_dates
+  examples: |
+    - next week instead
+    - change my dates
+    - I prefer July
+    - actually I want to go in [August](travel_dates)
+    - change travel dates to [August](travel_dates)
+    - later in the year please
+    - different dates would be better
+    - update my travel dates
+
+- intent: modify_budget
+  examples: |
+    - I have more budget
+    - change my budget
+    - less than [1000](budget_amount) euros
+    - up to [2000](budget_amount) euros
+    - actually I can spend [2500](budget_amount) euros
+    - change budget to [2000](budget_amount) euros
+    - I want to spend around [3000](budget_amount) euros
+    - update budget please
+
+- intent: modify_eco_level
+  examples: |
+    - more sustainable please
+    - less eco friendly
+    - I care more about environment now
+    - carbon neutral please
+    - change eco level to [high](eco_level)
+    - I want a more sustainable trip
+    - change it to as green as possible
+    - update sustainability preference
+
+- intent: modify_transport_mode
+  examples: |
+    - I want to [fly](transport_mode) instead
+    - change transport mode to [train](transport_mode)
+    - I prefer taking the [bus](transport_mode)
+    - let's go by [ferry](transport_mode) instead
+    - I want to travel by [car](transport_mode) instead
+    - take [train](transport_mode) instead please
+    - change to [flight](transport_mode)
+    - update transport to [bus](transport_mode)
+
+- intent: modify_origin
+  examples: |
+    - actually I'm leaving from [Berlin](origin)
+    - change my origin to [London](origin)
+    - I want to start from [Munich](origin)
+    - my departure city is [Amsterdam](origin)
+    - update origin to [Rome](origin)
+    - actually I live in [Frankfurt](origin)
+    - now I'm flying from [Vienna](origin)
+    - change start to [Paris](origin)
+
+- intent: modify_num_travellers
+  examples: |
+    - actually I'm travelling with [2](num_travellers) people
+    - change number of travellers to [4](num_travellers)
+    - we are a group of [3](num_travellers) now
+    - just me now, [1](num_travellers) traveller only
+    - now travelling with [5](num_travellers) friends
+    - update to [3](num_travellers) people
+    - group size changed to [6](num_travellers)
+    - only [2](num_travellers) of us now
+
+- intent: modify_itinerary
+  examples: |
+    - I want to change my itinerary
+    - modify my trip details
+    - I need to update my travel plan
+    - change my itinerary
+    - I want to make changes to my trip
+    - update my travel details
+    - let me modify something
+    - I need to adjust my plan
+
+# ─────────────────────────────────────────────────────────────────────────────
+# out_of_scope — 10 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: out_of_scope
+  examples: |
+    - what's the weather like
+    - tell me a joke
+    - who won the football match
+    - what's the stock price of Apple
+    - order me a pizza
+    - what time is it
+    - help me write an email
+    - who is the president
+    - latest stock market news
+    - solve my maths homework
+
+# ─────────────────────────────────────────────────────────────────────────────
+# bot_challenge — 10 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: bot_challenge
+  examples: |
+    - are you a bot
+    - are you a human
+    - am I talking to a robot
+    - is this AI
+    - are you real
+    - are you an AI assistant
+    - who made you
+    - what are you
+    - are you automated
+    - is a real person answering
+
+# ─────────────────────────────────────────────────────────────────────────────
+# request_help — 10 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: request_help
+  examples: |
+    - help
+    - what can you do
+    - how does this work
+    - I need help
+    - show me what you can do
+    - explain the travel planning options
+    - I need support with NovaPlan
+    - how can you help me plan my trip
+    - what are your capabilities
+    - guide me on how to use this
+
+# ─────────────────────────────────────────────────────────────────────────────
+# review_details — 8 examples
+# ─────────────────────────────────────────────────────────────────────────────
+- intent: review_details
+  examples: |
+    - show me what I said
+    - review my trip details
+    - tell me my details
+    - what did I enter
+    - confirm my details
+    - can I see what I entered so far
+    - show me the trip details I've provided
+    - review trip

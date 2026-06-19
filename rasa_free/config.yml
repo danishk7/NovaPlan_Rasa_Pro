@@ -1,0 +1,75 @@
+version: "3.1"
+
+assistant_id: nova-plan-assistant
+
+recipe: default.v1
+language: en
+
+pipeline:
+  # ── Tokenisation ──────────────────────────────────────────────────────────
+  - name: WhitespaceTokenizer
+
+  # ── Featurisation ─────────────────────────────────────────────────────────
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+
+  # Word-level bag-of-words
+  - name: CountVectorsFeaturizer
+
+  # Character n-gram features — improves handling of typos and morphology
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+
+  # ── Intent + Entity classification ────────────────────────────────────────
+  - name: DIETClassifier
+    epochs: 80
+    use_masked_language_model: true
+    # FIX: softmax requires inner similarity; switched from cosine to inner.
+    # inner product is unbounded, so constrain_similarities: true is kept
+    # to regularise scores and prevent runaway logits — this is the
+    # recommended pairing when using softmax confidence.
+    similarity_type: inner
+    constrain_similarities: true
+    model_confidence: softmax
+    entity_recognition: true
+    batch_size: [64, 256]
+    eval_num_examples: 0
+
+  # ── Post-processing ───────────────────────────────────────────────────────
+  - name: EntitySynonymMapper
+  - name: RegexEntityExtractor
+    use_lookup_tables: true
+    use_regexes: true
+
+  # ── Fallback threshold ────────────────────────────────────────────────────
+  - name: FallbackClassifier
+    threshold: 0.40
+    ambiguity_threshold: 0.15
+
+policies:
+  # Exact story memorisation — fires on perfect match
+  - name: MemoizationPolicy
+    max_history: 10
+
+  # Rules — deterministic, always overrides TEDPolicy
+  - name: RulePolicy
+    core_fallback_threshold: 0.35
+    core_fallback_action_name: action_default_fallback
+    enable_fallback_prediction: true
+
+  # Transformer-based dialogue policy — learns from stories
+  # similarity_type: cosine  — bounded scores, equal action weighting
+  # model_confidence: linear_norm — the only confidence mode compatible
+  #   with cosine similarity in Rasa 3.x. TEDPolicy internally defaults
+  #   to softmax (which requires inner), so this must be set explicitly.
+  - name: TEDPolicy
+    max_history: 10
+    epochs: 50
+    similarity_type: inner
+    constrain_similarities: true
+    model_confidence: softmax
+    use_gpu: false
+    batch_size: [64, 256]
+    eval_num_examples: 0

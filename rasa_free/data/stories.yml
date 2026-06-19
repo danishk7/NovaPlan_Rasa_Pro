@@ -1,0 +1,169 @@
+version: "3.1"
+
+stories:
+
+# ─────────────────────────────────────────────────────────────────────────────
+# HAPPY PATH — Complete booking flow (canonical architecture)
+# book_trip → booking_form → action_display_itinerary_summary
+#           → confirm_itinerary → action_complete_itinerary → utter_booking_confirmed
+# ─────────────────────────────────────────────────────────────────────────────
+- story: complete booking flow — happy path
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: book_trip
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: confirm_itinerary
+    - action: action_complete_itinerary
+    - action: utter_itinerary_created
+    - action: utter_booking_confirmed
+
+# ─────────────────────────────────────────────────────────────────────────────
+# MODIFICATION FLOWS — review then change before confirming
+# ─────────────────────────────────────────────────────────────────────────────
+- story: user modifies destination after summary
+  steps:
+    - intent: book_trip
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: modify_destination
+    - action: action_reset_destination
+    - action: utter_ask_destination
+    - intent: provide_destination
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: confirm_itinerary
+    - action: action_complete_itinerary
+    - action: utter_itinerary_created
+    - action: utter_booking_confirmed
+
+- story: user modifies dates after summary
+  steps:
+    - intent: book_trip
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: modify_dates
+    - action: action_reset_dates
+    - action: utter_ask_travel_dates
+    - intent: provide_dates
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: confirm_itinerary
+    - action: action_complete_itinerary
+    - action: utter_itinerary_created
+    - action: utter_booking_confirmed
+
+- story: user modifies budget after summary
+  steps:
+    - intent: book_trip
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: modify_budget
+    - action: action_reset_budget
+    - action: utter_ask_budget_amount
+    - intent: provide_budget
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: confirm_itinerary
+    - action: action_complete_itinerary
+    - action: utter_itinerary_created
+    - action: utter_booking_confirmed
+
+- story: user changes transport mode from summary
+  steps:
+    - intent: book_trip
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: modify_transport_mode
+    - action: action_reset_transport_mode
+    - action: utter_ask_transport_mode
+    - intent: provide_transport_mode
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: confirm_itinerary
+    - action: action_complete_itinerary
+    - action: utter_itinerary_created
+    - action: utter_booking_confirmed
+
+- story: user reviews then cancels
+  steps:
+    - intent: book_trip
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: booking_cancelled
+    - action: action_cancel_booking
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FALLBACK RECOVERY
+# ─────────────────────────────────────────────────────────────────────────────
+- story: fallback then recovery with greet
+  steps:
+    - intent: nlu_fallback
+    - action: action_handle_fallback
+    - intent: greet
+    - action: utter_greet
+
+- story: fallback then recovery with book trip
+  steps:
+    - intent: nlu_fallback
+    - action: action_handle_fallback
+    - intent: book_trip
+    - action: booking_form
+    - active_loop: booking_form
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ESCALATION FLOW
+# ─────────────────────────────────────────────────────────────────────────────
+- story: human escalation after form
+  steps:
+    - intent: book_trip
+    - action: booking_form
+    - active_loop: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+    - intent: escalate_to_human
+    - action: action_human_handover
+    - action: utter_escalation_initiated

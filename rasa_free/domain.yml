@@ -1,0 +1,490 @@
+version: "3.1"
+
+#  INTENTS
+intents:
+  # COMMON
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - escalate_to_human
+  - start_over
+  - out_of_scope
+  - bot_challenge
+  # PLANNING
+  - book_trip
+  - provide_destination
+  - provide_origin
+  - provide_dates
+  - provide_budget
+  - provide_eco_level
+  - provide_transport_mode
+  - provide_num_travellers
+  - review_details
+  - booking_cancelled
+  - confirm_itinerary
+  # REQUEST
+  - request_carbon_info
+  - request_eco_hotels
+  - request_transport_options
+  - request_cultural_info
+  - request_eco_tips
+  - request_activities
+  - request_offset_programs
+  - request_help
+  # MODIFICATION
+  - modify_origin
+  - modify_destination
+  - modify_dates
+  - modify_budget
+  - modify_eco_level
+  - modify_transport_mode
+  - modify_num_travellers
+  - modify_itinerary
+
+#  ENTITIES
+entities:
+  - destination
+  - origin
+  - travel_dates
+  - num_travellers
+  - budget_amount
+  - currency
+  - eco_level
+  - transport_mode
+  - trip_type
+  
+#  SLOTS
+slots:
+  destination:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: destination
+        conditions:
+          - active_loop: booking_form
+            requested_slot: destination
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: destination
+
+  origin:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: origin
+        conditions:
+          - active_loop: booking_form
+            requested_slot: origin
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: origin
+
+  travel_dates:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: travel_dates
+        conditions:
+          - active_loop: booking_form
+            requested_slot: travel_dates
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: travel_dates
+
+  num_travellers:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: num_travellers
+        conditions:
+          - active_loop: booking_form
+            requested_slot: num_travellers
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: num_travellers
+
+  budget_amount:
+    type: float
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: budget_amount
+        conditions:
+          - active_loop: booking_form
+            requested_slot: budget_amount
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: budget_amount
+
+  eco_level:
+    type: categorical
+    values:
+      - low
+      - moderate
+      - high
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: eco_level
+        conditions:
+          - active_loop: booking_form
+            requested_slot: eco_level
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: eco_level
+
+  transport_mode:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: transport_mode
+        conditions:
+          - active_loop: booking_form
+            requested_slot: transport_mode
+      - type: from_text
+        conditions:
+          - active_loop: booking_form
+            requested_slot: transport_mode
+
+  trip_type:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: trip_type
+        conditions:
+          - active_loop: null
+
+  carbon_score:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  carbon_colour:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  escalated:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  fallback_count:
+    type: float
+    influence_conversation: true
+    initial_value: 0
+    mappings:
+      - type: custom
+
+  user_id:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  conversation_id:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  itinerary_draft:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  itinerary_confirmed:
+    type: bool
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  # Booking slots
+  selected_option_id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+  booking_reference:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+  booking_status:
+    type: categorical
+    values: [pending, confirmed, cancelled, failed]
+    influence_conversation: true
+    initial_value: null
+    mappings:
+      - type: custom
+
+  price_total:
+    type: float
+    influence_conversation: true
+    initial_value: null
+    mappings:
+      - type: custom
+
+  # Modification tracking
+  modification_count:
+    type: float
+    influence_conversation: false
+    initial_value: 0
+    mappings:
+      - type: custom
+
+  awaiting_review:
+    type: bool
+    influence_conversation: true
+    initial_value: false
+    mappings:
+      - type: custom
+
+#  FORMS
+forms:
+  booking_form:
+    required_slots:
+      - origin
+      - destination
+      - travel_dates
+      - budget_amount
+      - num_travellers
+      - eco_level
+      - transport_mode
+
+#  ACTIONS
+actions:
+  - action_session_start
+  - utter_default_fallback
+  - action_fetch_travel_options
+  - action_calculate_carbon
+  - action_fetch_eco_hotels
+  - action_get_cultural_info
+  - action_get_eco_tips
+  - action_get_activities
+  - action_get_offset_programs
+  - action_human_handover
+  - action_handle_fallback
+  - action_build_itinerary_package
+  - action_complete_itinerary
+  - action_restart
+  - action_default_fallback
+  # Booking actions
+  - action_cancel_booking
+  - validate_booking_form
+  # Modification actions
+  - action_display_itinerary_summary
+  - action_reset_destination
+  - action_reset_dates
+  - action_reset_budget
+  - action_reset_eco_level
+  - action_cancel_itinerary
+  - action_reset_transport_mode
+  - action_reset_num_travellers
+  - action_reset_origin
+
+#  RESPONSES
+responses:
+  utter_greet:
+    - text: |
+        🌿 Welcome to **NovaPlan.ai** — your sustainable travel advisor!
+        I help you plan low-carbon journeys with verified eco options.
+        Ready to plan your next trip?
+      buttons:
+        - title: "🗺️ Plan a trip"
+          payload: "Plan trip"
+        - title: "♻️ Carbon footprint"
+          payload: "Request carbon info"
+        - title: "🏨 Eco hotels"
+          payload: "Request eco hotels"
+        - title: "❓ Help"
+          payload: "Help me"
+
+  utter_ask_origin:
+    - text: "🏠 And where will you be travelling **from**? *(e.g. Berlin, London, Paris)*"
+
+  utter_ask_destination:
+    - text: "🌍 Where would you like to travel **to**? *(e.g. Amsterdam, Lisbon, Barcelona)*"
+
+  utter_ask_travel_dates:
+    - text: "📅 When are you planning to travel? *(e.g. 15-20 June, next weekend, July 10 for 5 days)*"
+
+  utter_ask_num_travellers:
+    - text: "👥 How many people are travelling (including you)?"
+
+  utter_ask_eco_level:
+    - text: "🌱 How important is sustainability to you for this trip?"
+      buttons:
+        - title: "🌿 Just a little greener"
+          payload: "low eco level"
+        - title: "♻️ Actively eco-friendly"
+          payload: "medium eco level"
+        - title: "🌍 Maximum sustainability"
+          payload: "high eco level"
+
+  utter_ask_budget_amount:
+    - text: "💰 What's your approximate **total budget** for the trip (in EUR)?"
+      buttons:
+        - title: "Under €500"
+          payload: "My budget is about 400 euros"
+        - title: "€500 - €1,500"
+          payload: "My budget is about 1000 euros"
+        - title: "€1,500 - €3,000"
+          payload: "My budget is about 2000 euros"
+        - title: "€3,000+"
+          payload: "My budget is about 4000 euros" 
+
+  utter_ask_transport_mode:
+    - text: |
+        🚆 Almost there! One last thing — how would you like to travel from {origin} to {destination}?
+        I'll fetch options and carbon impact for your chosen mode.
+      buttons:
+        - title: "✈️ Flight"
+          payload: "flight"
+        - title: "🚆 Train"
+          payload: "train"
+        - title: "🚌 Bus"
+          payload: "bus"
+        - title: "🚗 Car"
+          payload: "car"
+        - title: "⛴️ Ferry"
+          payload: "ferry"
+
+  utter_goodbye:
+    - text: "🌱 Thanks for choosing sustainable travel! Safe and green journeys ahead! ✈️🌍"
+
+  utter_out_of_scope:
+    - text: |
+        🌿 I'm your dedicated **eco-travel assistant** — I'm best at:
+        • Sustainable trip planning
+        • Carbon footprint calculations
+        • Eco-certified hotel recommendations
+        • Green transport options
+
+        Would you like help with any of these?
+      buttons:
+        - title: "🗺️ Plan a trip"
+          payload: "Plan trip"
+        - title: "📊 Carbon footprint"
+          payload: "Request carbon info"
+
+  utter_ask_rephrase:
+    - text: "🤔 I didn't quite catch that. Could you rephrase? Here are some things I can help with:"
+      buttons:
+        - title: "Plan a trip"
+          payload: "Plan trip"
+        - title: "Carbon info"
+          payload: "Request carbon info"
+        - title: "Eco hotels"
+          payload: "Request eco hotels"
+        - title: "Speak to a human"
+          payload: "Escalate to human"
+
+  utter_default_fallback:
+    - text: "😕 I'm still having trouble understanding. Let me connect you with a human travel specialist."
+
+  utter_escalation_initiated:
+    - text: |
+        👤 **Connecting you to a travel specialist...**
+        I've packaged your trip details for the advisor.
+        A specialist will follow up shortly.
+
+  utter_start_over_confirm:
+    - text: "🔄 Starting fresh! What would you like to plan?"
+      buttons:
+        - title: "🗺️ New trip"
+          payload: "Plan trip"
+        - title: "📊 Carbon check"
+          payload: "Request carbon info"
+
+  utter_bot_challenge:
+    - text: "🤖 I'm NovaPlan.ai, an AI travel advisor built with Rasa Open Source. I'm here to help you plan sustainable journeys!"
+
+  utter_help:
+    - text: |
+        🌿 **NovaPlan.ai — Help Guide**
+
+        Here's what I can do:
+        • **Plan trips** — multi-turn dialogue to build your itinerary
+        • **Carbon footprint** — real-time CO₂ estimates per transport mode
+        • **Eco hotels** — verified green-certified accommodation options
+        • **Transport comparison** — trains, buses, flights ranked by emissions
+        • **Cultural tips** — responsible tourism guidance for your destination
+        • **Human handover** — escalate to a travel specialist anytime
+
+  utter_affirm:
+    - text: "✅ Got it! Let's continue."
+
+  utter_deny:
+    - text: "No problem! Let me know if you'd like to change anything."
+
+  utter_itinerary_created:
+    - text: "🎉 Your sustainable itinerary has been created and saved for this session."
+
+  utter_booking_confirmed:
+    - text: |
+        ✅ **Booking Confirmed!**
+        
+        Reference: {booking_reference}
+        Total: €{price_total}
+        
+        Confirmation sent to your email.
+        Have a wonderful, sustainable trip! 🌍
+
+  utter_itinerary_summary:
+    - text: |
+        📋 **Review Your Trip:**
+        
+        🏠 **From:** {origin}
+        🌍 **To:** {destination}
+        📅 **Dates:** {travel_dates}
+        💰 **Budget:** €{budget_amount}
+        🌱 **Eco Level:** {eco_level}
+        🚗 **Transport:** {transport_mode}
+        👥 **Travellers:** {num_travellers}
+        
+        Ready to book or make changes?
+
+  utter_modification_options:
+    - text: |
+        🔄 **What would you like to change?**
+      buttons:
+        - title: "🏠 Origin"
+          payload: "Modify origin"
+        - title: "📍 Destination"
+          payload: "Modify destination"
+        - title: "📅 Travel dates"
+          payload: "Modify travel dates"
+        - title: "💰 Budget"
+          payload: "Modify budget"
+        - title: "🚗 Transport mode"
+          payload: "Modify transport mode"
+        - title: "🌱 Eco level"
+          payload: "Modify eco level"
+        - title: "✅ Looks good!"
+          payload: "affirm"
+
+
+#  SESSION CONFIG
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

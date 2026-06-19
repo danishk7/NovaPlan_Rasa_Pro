@@ -1,0 +1,1522 @@
+[
+  {
+    "text": "that's everything I needed",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "start_over",
+      "confidence": 0.5144075751304626
+    }
+  },
+  {
+    "text": "thanks, that's all for now",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.751961350440979
+    }
+  },
+  {
+    "text": "all good",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.9556088447570801
+    }
+  },
+  {
+    "text": "yup",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.29889219999313354
+    }
+  },
+  {
+    "text": "exactly",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "provide_eco_level",
+      "confidence": 0.1856258660554886
+    }
+  },
+  {
+    "text": "not now",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "modify_num_travellers",
+      "confidence": 0.5400082468986511
+    }
+  },
+  {
+    "text": "negative",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.12109634280204773
+    }
+  },
+  {
+    "text": "high-speed rail",
+    "intent": "book_trip",
+    "intent_prediction": {
+      "name": "provide_transport_mode",
+      "confidence": 0.40582704544067383
+    }
+  },
+  {
+    "text": "I want to go to Amsterdam",
+    "intent": "provide_destination",
+    "intent_prediction": {
+      "name": "modify_destination",
+      "confidence": 0.7657303810119629
+    }
+  },
+  {
+    "text": "I want to travel to Lisbon",
+    "intent": "provide_destination",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.9139052033424377
+    }
+  },
+  {
+    "text": "I'm based in Warsaw",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.8203380703926086
+    }
+  },
+  {
+    "text": "travelling next weekend",
+    "intent": "provide_dates",
+    "intent_prediction": {
+      "name": "provide_transport_mode",
+      "confidence": 0.18240109086036682
+    }
+  },
+  {
+    "text": "I'm planning to travel in August",
+    "intent": "provide_dates",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.9753456115722656
+    }
+  },
+  {
+    "text": "planning for Christmas week",
+    "intent": "provide_dates",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.9970811009407043
+    }
+  },
+  {
+    "text": "around 800",
+    "intent": "provide_budget",
+    "intent_prediction": {
+      "name": "provide_num_travellers",
+      "confidence": 0.534932553768158
+    }
+  },
+  {
+    "text": "under 1000",
+    "intent": "provide_budget",
+    "intent_prediction": {
+      "name": "provide_dates",
+      "confidence": 0.28668326139450073
+    }
+  },
+  {
+    "text": "can we go by ferry",
+    "intent": "provide_transport_mode",
+    "intent_prediction": {
+      "name": "modify_transport_mode",
+      "confidence": 0.5741585493087769
+    }
+  },
+  {
+    "text": "ferry",
+    "intent": "provide_transport_mode",
+    "intent_prediction": {
+      "name": "modify_transport_mode",
+      "confidence": 0.4826461374759674
+    }
+  },
+  {
+    "text": "eco travel recommendations",
+    "intent": "request_eco_tips",
+    "intent_prediction": {
+      "name": "out_of_scope",
+      "confidence": 0.3721436858177185
+    }
+  },
+  {
+    "text": "sustainability tips",
+    "intent": "request_eco_tips",
+    "intent_prediction": {
+      "name": "provide_eco_level",
+      "confidence": 0.885399341583252
+    }
+  },
+  {
+    "text": "I'm finished planning",
+    "intent": "confirm_itinerary",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.8782575130462646
+    }
+  },
+  {
+    "text": "what's the weather like",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.40910592675209045
+    }
+  },
+  {
+    "text": "help me write an email",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "request_help",
+      "confidence": 0.38120201230049133
+    }
+  },
+  {
+    "text": "is this AI",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.33136147260665894
+    }
+  },
+  {
+    "text": "is a real person answering",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "escalate_to_human",
+      "confidence": 0.5699223875999451
+    }
+  },
+  {
+    "text": "I want to start from Munich not from Berlin",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.8305734395980835
+    }
+  },
+  {
+    "text": "leaving from Brussels",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.9938856959342957
+    }
+  },
+  {
+    "text": "departing from Prague not from Berlin",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.9650061130523682
+    }
+  },
+  {
+    "text": "I'd prefer London",
+    "intent": "modify_destination",
+    "intent_prediction": {
+      "name": "provide_transport_mode",
+      "confidence": 0.2601306140422821
+    }
+  },
+  {
+    "text": "I want to spend around 2000 euros",
+    "intent": "modify_budget",
+    "intent_prediction": {
+      "name": "provide_budget",
+      "confidence": 0.8495814204216003
+    }
+  },
+  {
+    "text": "update to be greener",
+    "intent": "modify_eco_level",
+    "intent_prediction": {
+      "name": "modify_destination",
+      "confidence": 0.27929458022117615
+    }
+  },
+  {
+    "text": "I'm going with 4 family members instead",
+    "intent": "modify_num_travellers",
+    "intent_prediction": {
+      "name": "provide_num_travellers",
+      "confidence": 0.5332351326942444
+    }
+  },
+  {
+    "text": "greetings",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.3129953444004059
+    }
+  },
+  {
+    "text": "yo",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.4637190103530884
+    }
+  },
+  {
+    "text": "cheers",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.1872834414243698
+    }
+  },
+  {
+    "text": "farewell",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.21488215029239655
+    }
+  },
+  {
+    "text": "sounds good",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.381576806306839
+    }
+  },
+  {
+    "text": "I agree",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.19425372779369354
+    }
+  },
+  {
+    "text": "I need to book travel to Dubrovnik from Paris for Christmas week",
+    "intent": "book_trip",
+    "intent_prediction": {
+      "name": "provide_dates",
+      "confidence": 0.38091906905174255
+    }
+  },
+  {
+    "text": "I want to reduce my carbon footprint while travelling to Paris from Paris on 15-20 June",
+    "intent": "book_trip",
+    "intent_prediction": {
+      "name": "request_carbon_info",
+      "confidence": 0.4250563085079193
+    }
+  },
+  {
+    "text": "I want to travel",
+    "intent": "book_trip",
+    "intent_prediction": {
+      "name": "provide_destination",
+      "confidence": 0.17586608231067657
+    }
+  },
+  {
+    "text": "intercity",
+    "intent": "book_trip",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.20836031436920166
+    }
+  },
+  {
+    "text": "I'm travelling from Berlin",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.888754665851593
+    }
+  },
+  {
+    "text": "starting from Amsterdam",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.7394021153450012
+    }
+  },
+  {
+    "text": "from Stockholm",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.8157070875167847
+    }
+  },
+  {
+    "text": "I'd like to go this summer",
+    "intent": "provide_dates",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.37087392807006836
+    }
+  },
+  {
+    "text": "my budget is 500 euros",
+    "intent": "provide_budget",
+    "intent_prediction": {
+      "name": "modify_budget",
+      "confidence": 0.6806616187095642
+    }
+  },
+  {
+    "text": "travel on foot",
+    "intent": "provide_transport_mode",
+    "intent_prediction": {
+      "name": "request_carbon_info",
+      "confidence": 0.4117047190666199
+    }
+  },
+  {
+    "text": "we are a group of 6 people",
+    "intent": "provide_num_travellers",
+    "intent_prediction": {
+      "name": "modify_num_travellers",
+      "confidence": 0.621866762638092
+    }
+  },
+  {
+    "text": "sustainable accommodation in Barcelona below 900 euros",
+    "intent": "request_eco_hotels",
+    "intent_prediction": {
+      "name": "modify_budget",
+      "confidence": 0.28179502487182617
+    }
+  },
+  {
+    "text": "I want to talk to someone",
+    "intent": "escalate_to_human",
+    "intent_prediction": {
+      "name": "provide_destination",
+      "confidence": 0.20665965974330902
+    }
+  },
+  {
+    "text": "forget what I said",
+    "intent": "start_over",
+    "intent_prediction": {
+      "name": "review_details",
+      "confidence": 0.7727870941162109
+    }
+  },
+  {
+    "text": "new trip please",
+    "intent": "start_over",
+    "intent_prediction": {
+      "name": "review_details",
+      "confidence": 0.24213874340057373
+    }
+  },
+  {
+    "text": "play some music",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.8424519300460815
+    }
+  },
+  {
+    "text": "translate this for me",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "request_cultural_info",
+      "confidence": 0.18395090103149414
+    }
+  },
+  {
+    "text": "what can you do",
+    "intent": "request_help",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.5466597676277161
+    }
+  },
+  {
+    "text": "explain the travel planning options",
+    "intent": "request_help",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.5383477807044983
+    }
+  },
+  {
+    "text": "change my origin to London",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "modify_itinerary",
+      "confidence": 0.22952957451343536
+    }
+  },
+  {
+    "text": "update origin to Rome",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.731109619140625
+    }
+  },
+  {
+    "text": "different city",
+    "intent": "modify_destination",
+    "intent_prediction": {
+      "name": "modify_dates",
+      "confidence": 0.2055613249540329
+    }
+  },
+  {
+    "text": "more expensive option",
+    "intent": "modify_budget",
+    "intent_prediction": {
+      "name": "modify_eco_level",
+      "confidence": 0.3861978352069855
+    }
+  },
+  {
+    "text": "less eco friendly",
+    "intent": "modify_eco_level",
+    "intent_prediction": {
+      "name": "request_eco_tips",
+      "confidence": 0.731979489326477
+    }
+  },
+  {
+    "text": "change it to as green as possible",
+    "intent": "modify_eco_level",
+    "intent_prediction": {
+      "name": "provide_eco_level",
+      "confidence": 0.9194897413253784
+    }
+  },
+  {
+    "text": "we are 2 travellers in total now",
+    "intent": "modify_num_travellers",
+    "intent_prediction": {
+      "name": "provide_num_travellers",
+      "confidence": 0.6527742147445679
+    }
+  },
+  {
+    "text": "confirm my details",
+    "intent": "review_details",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.7707813382148743
+    }
+  },
+  {
+    "text": "good evening",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.48019543290138245
+    }
+  },
+  {
+    "text": "I'm done, bye",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.9228066802024841
+    }
+  },
+  {
+    "text": "finished",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.995998740196228
+    }
+  },
+  {
+    "text": "yes",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.4518023431301117
+    }
+  },
+  {
+    "text": "sure",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.09110485017299652
+    }
+  },
+  {
+    "text": "nah",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.4922967255115509
+    }
+  },
+  {
+    "text": "never mind",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.2578924000263214
+    }
+  },
+  {
+    "text": "travelling to Barcelona",
+    "intent": "provide_destination",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.24991264939308167
+    }
+  },
+  {
+    "text": "take me to Zurich",
+    "intent": "provide_destination",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.7728802561759949
+    }
+  },
+  {
+    "text": "to Paris",
+    "intent": "provide_destination",
+    "intent_prediction": {
+      "name": "modify_destination",
+      "confidence": 0.7348556518554688
+    }
+  },
+  {
+    "text": "my origin is Rome",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.9658008217811584
+    }
+  },
+  {
+    "text": "origin is Dublin",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.9934410452842712
+    }
+  },
+  {
+    "text": "I'll start my journey in Dublin",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.9867764115333557
+    }
+  },
+  {
+    "text": "two weeks in October",
+    "intent": "provide_dates",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.9946135878562927
+    }
+  },
+  {
+    "text": "prioritise green options",
+    "intent": "provide_eco_level",
+    "intent_prediction": {
+      "name": "request_eco_tips",
+      "confidence": 0.1995352953672409
+    }
+  },
+  {
+    "text": "I'd rather take the bus",
+    "intent": "provide_transport_mode",
+    "intent_prediction": {
+      "name": "modify_transport_mode",
+      "confidence": 0.6179808974266052
+    }
+  },
+  {
+    "text": "prefer public transport",
+    "intent": "provide_transport_mode",
+    "intent_prediction": {
+      "name": "modify_transport_mode",
+      "confidence": 0.6415797472000122
+    }
+  },
+  {
+    "text": "travel by public transport",
+    "intent": "provide_transport_mode",
+    "intent_prediction": {
+      "name": "modify_transport_mode",
+      "confidence": 0.6131961345672607
+    }
+  },
+  {
+    "text": "there will be 3 of us travelling together",
+    "intent": "provide_num_travellers",
+    "intent_prediction": {
+      "name": "modify_num_travellers",
+      "confidence": 0.8223881125450134
+    }
+  },
+  {
+    "text": "I'm going with 4 family members",
+    "intent": "provide_num_travellers",
+    "intent_prediction": {
+      "name": "modify_num_travellers",
+      "confidence": 0.8182935118675232
+    }
+  },
+  {
+    "text": "calculate emissions for car from Paris to Rome",
+    "intent": "request_carbon_info",
+    "intent_prediction": {
+      "name": "request_cultural_info",
+      "confidence": 0.4792117774486542
+    }
+  },
+  {
+    "text": "how can I be greener",
+    "intent": "request_eco_tips",
+    "intent_prediction": {
+      "name": "request_help",
+      "confidence": 0.25760072469711304
+    }
+  },
+  {
+    "text": "create itinerary",
+    "intent": "confirm_itinerary",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.9680768847465515
+    }
+  },
+  {
+    "text": "I need human assistance",
+    "intent": "escalate_to_human",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.38187098503112793
+    }
+  },
+  {
+    "text": "this is too complex I need a person",
+    "intent": "escalate_to_human",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.8216079473495483
+    }
+  },
+  {
+    "text": "what is the meaning of life",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "request_cultural_info",
+      "confidence": 0.2353326976299286
+    }
+  },
+  {
+    "text": "can you help me with my homework",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "request_help",
+      "confidence": 0.8950227499008179
+    }
+  },
+  {
+    "text": "what are you",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "request_help",
+      "confidence": 0.30758240818977356
+    }
+  },
+  {
+    "text": "how can you help me plan my trip",
+    "intent": "request_help",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.6493287086486816
+    }
+  },
+  {
+    "text": "I'm now based in Warsaw",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.8369779586791992
+    }
+  },
+  {
+    "text": "actually I want to go in August",
+    "intent": "modify_dates",
+    "intent_prediction": {
+      "name": "modify_destination",
+      "confidence": 0.43711403012275696
+    }
+  },
+  {
+    "text": "less than 1000 euros",
+    "intent": "modify_budget",
+    "intent_prediction": {
+      "name": "provide_budget",
+      "confidence": 0.678081750869751
+    }
+  },
+  {
+    "text": "up to 2000 euros",
+    "intent": "modify_budget",
+    "intent_prediction": {
+      "name": "provide_budget",
+      "confidence": 0.9527196884155273
+    }
+  },
+  {
+    "text": "I care more about environment",
+    "intent": "modify_eco_level",
+    "intent_prediction": {
+      "name": "request_eco_tips",
+      "confidence": 0.38478943705558777
+    }
+  },
+  {
+    "text": "now travelling with 5 friends",
+    "intent": "modify_num_travellers",
+    "intent_prediction": {
+      "name": "provide_num_travellers",
+      "confidence": 0.657331109046936
+    }
+  },
+  {
+    "text": "I want to book for 6 people instead",
+    "intent": "modify_num_travellers",
+    "intent_prediction": {
+      "name": "modify_transport_mode",
+      "confidence": 0.20710088312625885
+    }
+  },
+  {
+    "text": "it's a trip for 1 person only now",
+    "intent": "modify_num_travellers",
+    "intent_prediction": {
+      "name": "provide_num_travellers",
+      "confidence": 0.5850427150726318
+    }
+  },
+  {
+    "text": "I want to adjust my travel plan",
+    "intent": "modify_itinerary",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.944911003112793
+    }
+  },
+  {
+    "text": "show me what I said",
+    "intent": "review_details",
+    "intent_prediction": {
+      "name": "request_cultural_info",
+      "confidence": 0.24786441028118134
+    }
+  },
+  {
+    "text": "good night",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.8025088310241699
+    }
+  },
+  {
+    "text": "later",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.27814310789108276
+    }
+  },
+  {
+    "text": "let's do that",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "request_help",
+      "confidence": 0.5387348532676697
+    }
+  },
+  {
+    "text": "go ahead",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "modify_destination",
+      "confidence": 0.34256696701049805
+    }
+  },
+  {
+    "text": "please do that",
+    "intent": "affirm",
+    "intent_prediction": {
+      "name": "request_help",
+      "confidence": 0.23763489723205566
+    }
+  },
+  {
+    "text": "no thanks",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.893859326839447
+    }
+  },
+  {
+    "text": "don't do that",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "request_help",
+      "confidence": 0.5240573287010193
+    }
+  },
+  {
+    "text": "create an itinerary",
+    "intent": "book_trip",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.9893180727958679
+    }
+  },
+  {
+    "text": "ICE",
+    "intent": "book_trip",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.453482985496521
+    }
+  },
+  {
+    "text": "leaving Brussels",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.9275489449501038
+    }
+  },
+  {
+    "text": "starting from Copenhagen",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.47557011246681213
+    }
+  },
+  {
+    "text": "leaving from Berlin next week",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.6277648210525513
+    }
+  },
+  {
+    "text": "going next month",
+    "intent": "provide_dates",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.4407106339931488
+    }
+  },
+  {
+    "text": "going from 12 to 19 July",
+    "intent": "provide_dates",
+    "intent_prediction": {
+      "name": "provide_budget",
+      "confidence": 0.3582642376422882
+    }
+  },
+  {
+    "text": "I want to be as sustainable as possible",
+    "intent": "provide_eco_level",
+    "intent_prediction": {
+      "name": "modify_eco_level",
+      "confidence": 0.6434449553489685
+    }
+  },
+  {
+    "text": "let's take the coach",
+    "intent": "provide_transport_mode",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.2562794089317322
+    }
+  },
+  {
+    "text": "I want the greenest transport",
+    "intent": "provide_transport_mode",
+    "intent_prediction": {
+      "name": "modify_transport_mode",
+      "confidence": 0.2863209843635559
+    }
+  },
+  {
+    "text": "we are 2 travellers in total",
+    "intent": "provide_num_travellers",
+    "intent_prediction": {
+      "name": "modify_num_travellers",
+      "confidence": 0.8527033925056458
+    }
+  },
+  {
+    "text": "What is the carbon footprint of travelling by ferry from Barcelona to Copenhagen",
+    "intent": "request_carbon_info",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.2620339095592499
+    }
+  },
+  {
+    "text": "tell me about eco-friendly activities",
+    "intent": "request_activities",
+    "intent_prediction": {
+      "name": "provide_eco_level",
+      "confidence": 0.9429069757461548
+    }
+  },
+  {
+    "text": "that's all",
+    "intent": "confirm_itinerary",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.6280508041381836
+    }
+  },
+  {
+    "text": "this looks good",
+    "intent": "confirm_itinerary",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.4292992651462555
+    }
+  },
+  {
+    "text": "yes proceed",
+    "intent": "confirm_itinerary",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.7356717586517334
+    }
+  },
+  {
+    "text": "I want expert help",
+    "intent": "escalate_to_human",
+    "intent_prediction": {
+      "name": "request_help",
+      "confidence": 0.7042549252510071
+    }
+  },
+  {
+    "text": "clear everything",
+    "intent": "start_over",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.970026433467865
+    }
+  },
+  {
+    "text": "tell me a joke",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.45364463329315186
+    }
+  },
+  {
+    "text": "order me a pizza",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.6634461879730225
+    }
+  },
+  {
+    "text": "what time is it",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "bot_challenge",
+      "confidence": 0.18396621942520142
+    }
+  },
+  {
+    "text": "am I talking to a robot",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "provide_destination",
+      "confidence": 0.5128252506256104
+    }
+  },
+  {
+    "text": "how does this work",
+    "intent": "request_help",
+    "intent_prediction": {
+      "name": "confirm_itinerary",
+      "confidence": 0.49185097217559814
+    }
+  },
+  {
+    "text": "I want to come from Madrid and not from Berlin",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.4887780249118805
+    }
+  },
+  {
+    "text": "actually I live in Frankfurt",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.5696558356285095
+    }
+  },
+  {
+    "text": "now i'm flying from Vienna",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.8418038487434387
+    }
+  },
+  {
+    "text": "update destination to Lisbon",
+    "intent": "modify_destination",
+    "intent_prediction": {
+      "name": "provide_destination",
+      "confidence": 0.7172693014144897
+    }
+  },
+  {
+    "text": "next week instead",
+    "intent": "modify_dates",
+    "intent_prediction": {
+      "name": "provide_dates",
+      "confidence": 0.24842548370361328
+    }
+  },
+  {
+    "text": "I prefer July",
+    "intent": "modify_dates",
+    "intent_prediction": {
+      "name": "provide_dates",
+      "confidence": 0.5970345139503479
+    }
+  },
+  {
+    "text": "change budget to 2000 euros",
+    "intent": "modify_budget",
+    "intent_prediction": {
+      "name": "provide_budget",
+      "confidence": 0.6604626178741455
+    }
+  },
+  {
+    "text": "I want to spend approximately 2000 euros",
+    "intent": "modify_budget",
+    "intent_prediction": {
+      "name": "provide_budget",
+      "confidence": 0.862565815448761
+    }
+  },
+  {
+    "text": "actually I'm travelling with 2 people",
+    "intent": "modify_num_travellers",
+    "intent_prediction": {
+      "name": "provide_num_travellers",
+      "confidence": 0.9669145345687866
+    }
+  },
+  {
+    "text": "I want to make changes to my trip",
+    "intent": "modify_itinerary",
+    "intent_prediction": {
+      "name": "start_over",
+      "confidence": 0.28373390436172485
+    }
+  },
+  {
+    "text": "good afternoon",
+    "intent": "greet",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.8582935929298401
+    }
+  },
+  {
+    "text": "ciao",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.2976439297199249
+    }
+  },
+  {
+    "text": "nothing else",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "deny",
+      "confidence": 0.4667266607284546
+    }
+  },
+  {
+    "text": "have a good day",
+    "intent": "goodbye",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.3004363477230072
+    }
+  },
+  {
+    "text": "cancel",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "start_over",
+      "confidence": 0.5738385915756226
+    }
+  },
+  {
+    "text": "that's wrong",
+    "intent": "deny",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.7922725081443787
+    }
+  },
+  {
+    "text": "Eurostar",
+    "intent": "book_trip",
+    "intent_prediction": {
+      "name": "modify_budget",
+      "confidence": 0.275095671415329
+    }
+  },
+  {
+    "text": "Thalys",
+    "intent": "book_trip",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.5215611457824707
+    }
+  },
+  {
+    "text": "TGV",
+    "intent": "book_trip",
+    "intent_prediction": {
+      "name": "affirm",
+      "confidence": 0.27644798159599304
+    }
+  },
+  {
+    "text": "destination Dubrovnik",
+    "intent": "provide_destination",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.772689163684845
+    }
+  },
+  {
+    "text": "my destination is Krakow",
+    "intent": "provide_destination",
+    "intent_prediction": {
+      "name": "modify_destination",
+      "confidence": 0.7901635766029358
+    }
+  },
+  {
+    "text": "I'd like to end up in Valletta",
+    "intent": "provide_destination",
+    "intent_prediction": {
+      "name": "modify_budget",
+      "confidence": 0.42451855540275574
+    }
+  },
+  {
+    "text": "coming from Madrid",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.708420991897583
+    }
+  },
+  {
+    "text": "flying out from Vienna",
+    "intent": "provide_origin",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.9361957907676697
+    }
+  },
+  {
+    "text": "I want to go on 15-20 June",
+    "intent": "provide_dates",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.9019874930381775
+    }
+  },
+  {
+    "text": "10 days in September",
+    "intent": "provide_dates",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.9032585024833679
+    }
+  },
+  {
+    "text": "I can spend up to 2000 euros",
+    "intent": "provide_budget",
+    "intent_prediction": {
+      "name": "modify_budget",
+      "confidence": 0.9671822786331177
+    }
+  },
+  {
+    "text": "approximately 3000 EUR",
+    "intent": "provide_budget",
+    "intent_prediction": {
+      "name": "modify_budget",
+      "confidence": 0.6361026167869568
+    }
+  },
+  {
+    "text": "I care a bit about eco",
+    "intent": "provide_eco_level",
+    "intent_prediction": {
+      "name": "modify_destination",
+      "confidence": 0.2511827349662781
+    }
+  },
+  {
+    "text": "travel via flight",
+    "intent": "provide_transport_mode",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.8946070075035095
+    }
+  },
+  {
+    "text": "it's just me, so 1 traveller",
+    "intent": "provide_num_travellers",
+    "intent_prediction": {
+      "name": "modify_num_travellers",
+      "confidence": 0.6349192261695862
+    }
+  },
+  {
+    "text": "travelling with 5 colleagues",
+    "intent": "provide_num_travellers",
+    "intent_prediction": {
+      "name": "modify_num_travellers",
+      "confidence": 0.5714327096939087
+    }
+  },
+  {
+    "text": "emissions for train from London to Paris",
+    "intent": "request_carbon_info",
+    "intent_prediction": {
+      "name": "request_eco_hotels",
+      "confidence": 0.37885528802871704
+    }
+  },
+  {
+    "text": "country information for Amsterdam",
+    "intent": "request_cultural_info",
+    "intent_prediction": {
+      "name": "request_carbon_info",
+      "confidence": 0.26639673113822937
+    }
+  },
+  {
+    "text": "environmental best practices",
+    "intent": "request_eco_tips",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.6353123188018799
+    }
+  },
+  {
+    "text": "green travel ideas",
+    "intent": "request_eco_tips",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.8786751627922058
+    }
+  },
+  {
+    "text": "what can I do there",
+    "intent": "request_activities",
+    "intent_prediction": {
+      "name": "request_help",
+      "confidence": 0.5076780319213867
+    }
+  },
+  {
+    "text": "yes I like this",
+    "intent": "confirm_itinerary",
+    "intent_prediction": {
+      "name": "out_of_scope",
+      "confidence": 0.3565208911895752
+    }
+  },
+  {
+    "text": "start from scratch",
+    "intent": "start_over",
+    "intent_prediction": {
+      "name": "modify_origin",
+      "confidence": 0.7469415664672852
+    }
+  },
+  {
+    "text": "recommend a restaurant",
+    "intent": "out_of_scope",
+    "intent_prediction": {
+      "name": "request_eco_tips",
+      "confidence": 0.5493660569190979
+    }
+  },
+  {
+    "text": "are you a human",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "escalate_to_human",
+      "confidence": 0.8876088261604309
+    }
+  },
+  {
+    "text": "who made you",
+    "intent": "bot_challenge",
+    "intent_prediction": {
+      "name": "out_of_scope",
+      "confidence": 0.6750301718711853
+    }
+  },
+  {
+    "text": "what are your capabilities",
+    "intent": "request_help",
+    "intent_prediction": {
+      "name": "request_activities",
+      "confidence": 0.6130741834640503
+    }
+  },
+  {
+    "text": "I need support with NovaPlan",
+    "intent": "request_help",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.3718452751636505
+    }
+  },
+  {
+    "text": "my departure city is Amsterdam",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.8606835007667542
+    }
+  },
+  {
+    "text": "now I'm starting from Copenhagen",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.8496854305267334
+    }
+  },
+  {
+    "text": "change from Zurich to Dublin",
+    "intent": "modify_origin",
+    "intent_prediction": {
+      "name": "provide_origin",
+      "confidence": 0.8306800127029419
+    }
+  },
+  {
+    "text": "let me go to Amsterdam instead",
+    "intent": "modify_destination",
+    "intent_prediction": {
+      "name": "modify_transport_mode",
+      "confidence": 0.2978886365890503
+    }
+  },
+  {
+    "text": "change of plans, I want to go to Barcelona",
+    "intent": "modify_destination",
+    "intent_prediction": {
+      "name": "modify_eco_level",
+      "confidence": 0.190816730260849
+    }
+  },
+  {
+    "text": "different dates",
+    "intent": "modify_dates",
+    "intent_prediction": {
+      "name": "modify_destination",
+      "confidence": 0.6942643523216248
+    }
+  },
+  {
+    "text": "later in June",
+    "intent": "modify_dates",
+    "intent_prediction": {
+      "name": "provide_dates",
+      "confidence": 0.6033125519752502
+    }
+  },
+  {
+    "text": "carbon neutral please",
+    "intent": "modify_eco_level",
+    "intent_prediction": {
+      "name": "request_offset_programs",
+      "confidence": 0.9918443560600281
+    }
+  },
+  {
+    "text": "change eco level to high",
+    "intent": "modify_eco_level",
+    "intent_prediction": {
+      "name": "provide_eco_level",
+      "confidence": 0.44898635149002075
+    }
+  },
+  {
+    "text": "I prefer taking the bus",
+    "intent": "modify_transport_mode",
+    "intent_prediction": {
+      "name": "provide_transport_mode",
+      "confidence": 0.9399654865264893
+    }
+  },
+  {
+    "text": "I need to update my travel plan",
+    "intent": "modify_itinerary",
+    "intent_prediction": {
+      "name": "book_trip",
+      "confidence": 0.8582733273506165
+    }
+  },
+  {
+    "text": "can I see what I entered so far",
+    "intent": "review_details",
+    "intent_prediction": {
+      "name": "goodbye",
+      "confidence": 0.8201680779457092
+    }
+  }
+]

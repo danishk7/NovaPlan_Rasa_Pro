@@ -1,0 +1,359 @@
+version: "3.1"
+
+rules:
+
+# ─────────────────────────────────────────────────────────────────────────────
+# BASIC CONVERSATION
+# ─────────────────────────────────────────────────────────────────────────────
+- rule: Greet user
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- rule: Say goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+- rule: Answer bot challenge
+  steps:
+    - intent: bot_challenge
+    - action: utter_bot_challenge
+
+- rule: Provide help
+  steps:
+    - intent: request_help
+    - action: utter_help
+
+- rule: Handle out-of-scope
+  steps:
+    - intent: out_of_scope
+    - action: utter_out_of_scope
+    - action: utter_ask_rephrase
+
+- rule: Handle affirmation outside form
+  condition:
+    - active_loop: null
+  steps:
+    - intent: affirm
+    - action: utter_affirm
+
+- rule: Handle denial outside form
+  condition:
+    - active_loop: null
+  steps:
+    - intent: deny
+    - action: utter_deny
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FORM ACTIVATION
+# ─────────────────────────────────────────────────────────────────────────────
+- rule: Activate booking form
+  steps:
+    - intent: book_trip
+    - action: booking_form
+    - active_loop: booking_form
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FORM SUBMISSION
+# Architecture: booking_form → action_display_itinerary_summary
+#               → confirm_itinerary → action_complete_itinerary
+#               → utter_itinerary_created → utter_booking_confirmed
+# ─────────────────────────────────────────────────────────────────────────────
+- rule: Submit booking form — show summary
+  condition:
+    - active_loop: booking_form
+  steps:
+    - action: booking_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_display_itinerary_summary
+
+- rule: Confirm itinerary — complete booking
+  steps:
+    - intent: confirm_itinerary
+    - action: action_complete_itinerary
+    - action: utter_itinerary_created
+    - action: utter_booking_confirmed
+
+- rule: Cancel booking
+  steps:
+    - intent: booking_cancelled
+    - action: action_cancel_booking
+
+# ─────────────────────────────────────────────────────────────────────────────
+# MODIFICATION RULES
+# ─────────────────────────────────────────────────────────────────────────────
+- rule: List modification options
+  steps:
+    - intent: modify_itinerary
+    - action: utter_modification_options
+
+- rule: Modify origin
+  steps:
+    - intent: modify_origin
+    - action: action_reset_origin
+    - action: utter_ask_origin
+
+- rule: Modify destination
+  steps:
+    - intent: modify_destination
+    - action: action_reset_destination
+    - action: utter_ask_destination
+
+- rule: Modify travel dates
+  steps:
+    - intent: modify_dates
+    - action: action_reset_dates
+    - action: utter_ask_travel_dates
+
+- rule: Modify transport mode
+  steps:
+    - intent: modify_transport_mode
+    - action: action_reset_transport_mode
+    - action: utter_ask_transport_mode
+
+- rule: Modify eco level
+  steps:
+    - intent: modify_eco_level
+    - action: action_reset_eco_level
+    - action: utter_ask_eco_level
+
+- rule: Modify number of travellers
+  steps:
+    - intent: modify_num_travellers
+    - action: action_reset_num_travellers
+    - action: utter_ask_num_travellers
+
+- rule: Modify budget
+  steps:
+    - intent: modify_budget
+    - action: action_reset_budget
+    - action: utter_ask_budget_amount
+
+- rule: Review trip details
+  steps:
+    - intent: review_details
+    - action: utter_itinerary_summary
+    - action: action_display_itinerary_summary
+
+# ─────────────────────────────────────────────────────────────────────────────
+# DIRECT INFORMATION REQUESTS
+# ─────────────────────────────────────────────────────────────────────────────
+- rule: Fetch eco hotels
+  steps:
+    - intent: request_eco_hotels
+    - action: action_fetch_eco_hotels
+
+- rule: Fetch transport options
+  steps:
+    - intent: request_transport_options
+    - action: action_fetch_travel_options
+
+- rule: Cultural info
+  steps:
+    - intent: request_cultural_info
+    - action: action_get_cultural_info
+
+- rule: Calculate carbon
+  steps:
+    - intent: request_carbon_info
+    - action: action_calculate_carbon
+
+- rule: Eco tips
+  steps:
+    - intent: request_eco_tips
+    - action: action_get_eco_tips
+
+- rule: Activities
+  steps:
+    - intent: request_activities
+    - action: action_get_activities
+
+- rule: Offset programs
+  steps:
+    - intent: request_offset_programs
+    - action: action_get_offset_programs
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FORM DRIFT — information requests while booking_form is active
+# ─────────────────────────────────────────────────────────────────────────────
+- rule: Hotels drift during form
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: request_eco_hotels
+    - action: action_fetch_eco_hotels
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Carbon drift during form
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: request_carbon_info
+    - action: action_calculate_carbon
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Cultural drift during form
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: request_cultural_info
+    - action: action_get_cultural_info
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Eco tips drift during form
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: request_eco_tips
+    - action: action_get_eco_tips
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Activities drift during form
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: request_activities
+    - action: action_get_activities
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Offset drift during form
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: request_offset_programs
+    - action: action_get_offset_programs
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Transport drift during form
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: request_transport_options
+    - action: action_fetch_travel_options
+    - action: booking_form
+    - active_loop: booking_form
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FORM SLOT FILLING
+# ─────────────────────────────────────────────────────────────────────────────
+- rule: Fill origin slot
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: provide_origin
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Fill destination slot
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: provide_destination
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Fill travel dates slot
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: provide_dates
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Fill num travellers slot
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: provide_num_travellers
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Fill budget slot
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: provide_budget
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Fill transport mode slot
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: provide_transport_mode
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Fill eco level slot
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: provide_eco_level
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Form fallback recovery
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: nlu_fallback
+    - action: booking_form
+    - active_loop: booking_form
+
+- rule: Cancel during form
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: deny
+    - action: action_cancel_itinerary
+    - active_loop: null
+
+- rule: Restart during form
+  condition:
+    - active_loop: booking_form
+  steps:
+    - intent: start_over
+    - action: action_restart
+    - active_loop: null
+
+# ─────────────────────────────────────────────────────────────────────────────
+# FALLBACK — single rule; action_handle_fallback manages count internally
+# and calls action_human_handover when fallback_count > 1.
+# utter_default_fallback is listed here so Rasa's static YAML validator
+# marks it as "used" — the action also calls it via dispatcher at runtime.
+# ─────────────────────────────────────────────────────────────────────────────
+- rule: Handle NLU fallback
+  condition:
+    - active_loop: null
+  steps:
+    - intent: nlu_fallback
+    - action: action_handle_fallback
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ESCALATION AND RESTART
+# FIX: removed utter_default_fallback — it contradicted the story
+#      'human escalation after form' which goes directly to action_human_handover
+# ─────────────────────────────────────────────────────────────────────────────
+- rule: Escalate to human
+  steps:
+    - intent: escalate_to_human
+    - action: action_human_handover
+    - action: utter_escalation_initiated
+
+- rule: Restart conversation
+  condition:
+    - active_loop: null
+  steps:
+    - intent: start_over
+    - action: action_restart
+    - active_loop: null
+    - action: utter_start_over_confirm
