@@ -1,0 +1,13 @@
+action_endpoint:
+  url: "http://127.0.0.1:5055/webhook"
+
+model_groups:
+  - id: llm_models_grp
+    models:
+      - provider: openai
+        model: ${LLM_MODEL_NAME}
+        api_base: https://openrouter.ai/api/v1
+        api_key: ${OPENROUTER_API_KEY}
+        timeout: 60
+        temperature: 0.3
+        max_completion_tokens: 1000

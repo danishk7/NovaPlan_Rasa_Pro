@@ -1,0 +1,84 @@
+version: "3.1"
+
+# Utility flows 
+# Replaces: greet/goodbye/help/bot_challenge/out_of_scope/escalation/restart rules
+#
+# Pattern flows (greet, goodbye, help) are the CALM equivalent of simple rules.
+# They are triggered by the LLM recognising the user's intent from context —
+# no intent classifiers or NLU training examples required.
+
+flows:
+
+  # Greet
+  greet:
+    description: Welcome the user to NovaPlan
+    steps:
+      - action: utter_greet
+        next: END
+
+  # Goodbye
+  goodbye:
+    description: End the conversation politely
+    steps:
+      - action: utter_goodbye
+        next: END
+
+  # Help
+  help:
+    description: Explain what NovaPlan can do
+    steps:
+      - action: utter_help
+        next: END
+
+  # Bot challenge
+  bot_challenge:
+    description: Respond to "are you a bot?" questions
+    steps:
+      - action: utter_bot_challenge
+        next: END
+
+  # Out of scope
+  out_of_scope:
+    description: Redirect off-topic requests back to travel assistance
+    steps:
+      - action: utter_out_of_scope
+        next: END
+
+  # Human escalation
+  escalate_to_human:
+    description: >
+      Transfer the conversation to a human travel specialist.
+      Packages all collected trip details as context for the agent.
+    steps:
+      - action: action_human_handover
+      - action: utter_escalation_initiated
+        next: END
+
+  # Start over 
+  start_over:
+    description: Clear all slots and restart the conversation
+    steps:
+      - action: action_restart
+      - action: utter_start_over_confirm
+        next: END
+
+  # Cancel booking
+  cancel_booking:
+    description: Cancel the current trip plan and clear all collected details
+    steps:
+      - action: action_cancel_booking
+        next: END
+
+  # Modify itinerary
+  modify_itinerary:
+    description: Modify any aspect of the planned trip
+    steps:
+      - action: utter_modification_options
+        next: END
+
+  # Review details 
+  review_details:
+    description: Show the current collected trip details
+    steps:
+      - action: action_display_itinerary_summary
+        next: END

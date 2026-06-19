@@ -1,0 +1,125 @@
+test_cases:
+  - test_case: greet welcome
+    steps:
+      - user: "hello"
+      - utter: utter_greet
+
+  - test_case: out of scope request
+    steps:
+      - user: "write me a poem about taxes"
+      - utter: utter_cannot_handle
+
+  - test_case: complete trip planning happy path
+    steps:
+      - user: "I want to plan a sustainable trip"
+      - utter: utter_ask_origin
+      - user: "Berlin"
+      - slot_was_set:
+          - origin: Berlin
+      - utter: utter_ask_destination
+      - user: "Amsterdam"
+      - slot_was_set:
+          - destination: Amsterdam
+      - utter: utter_ask_travel_dates
+      - user: "20 August 2026 for 4 days"
+      - utter: utter_ask_budget_amount
+      - user: "1000 euros"
+      - slot_was_set:
+          - budget_amount: 1000
+      - utter: utter_ask_num_travellers
+      - user: "2 people"
+      - utter: utter_ask_eco_level
+      - user: "maximum sustainability"
+      - utter: utter_ask_transport_mode
+      - user: "train"
+      - user: "continue"
+      - user: "confirm trip"
+
+  - test_case: destination capture during trip planning
+    steps:
+      - user: "I want to plan a sustainable trip"
+      - utter: utter_ask_origin
+      - user: "London"
+      - slot_was_set:
+          - origin: London
+      - utter: utter_ask_destination
+      - user: "Paris"
+
+  - test_case: traveller count and budget capture
+    steps:
+      - user: "Plan a sustainable trip from London to Paris on 25 August 2026 for 3 people with a budget of 1200 euros"
+      - slot_was_set:
+          - origin: London
+          - destination: Paris
+          - budget_amount: 25.0
+
+  - test_case: sustainability preference capture
+    steps:
+      - user: "Plan a trip from Berlin to Amsterdam on 20 August 2026"
+      - user: "maximum sustainability"
+
+  - test_case: transport mode capture
+    steps:
+      - user: "Plan a trip from Berlin to Amsterdam on 20 August 2026"
+      - user: "I want to travel by train"
+
+  - test_case: invalid past travel date
+    steps:
+      - user: "Plan a trip from Berlin to Amsterdam on 2024-01-01"
+      - slot_was_set:
+          - travel_dates: null
+
+  - test_case: carbon footprint request
+    steps:
+      - user: "calculate carbon emissions for a train from Berlin to Paris"
+
+  - test_case: eco hotels request
+    steps:
+      - user: "show me eco hotels in Lisbon"
+
+  - test_case: cultural destination information request
+    steps:
+      - user: "tell me cultural tips for Barcelona"
+      - slot_was_set:
+          - destination: Barcelona
+
+  - test_case: eco activities request
+    steps:
+      - user: "show sustainable activities in Lisbon"
+
+  - test_case: offset programs request
+    steps:
+      - user: "show carbon offset programs for my trip"
+
+  - test_case: cancel trip request during planning
+    steps:
+      - user: "I want to plan a sustainable trip"
+      - utter: utter_ask_origin
+      - user: "Berlin"
+      - utter: utter_ask_destination
+      - user: "Amsterdam"
+      - utter: utter_ask_travel_dates
+      - user: "20 August 2026 for 4 days"
+      - utter: utter_ask_budget_amount
+      - user: "1000 euros"
+      - utter: utter_ask_num_travellers
+      - user: "2"
+      - utter: utter_ask_eco_level
+      - user: "moderate"
+      - user: "train"
+      - user: "cancel"
+
+  - test_case: human handover support request
+    steps:
+      - user: "connect me to a human support agent"
+      - utter: utter_human_handoff_not_available
+
+  - test_case: start over request
+    steps:
+      - user: "start over"
+      - utter: utter_start_over_confirm
+
+  - test_case: goodbye
+    steps:
+      - user: "goodbye"
+      - utter: utter_ask_rephrase

@@ -1,0 +1,106 @@
+version: "3.1"
+
+nlu:
+  - intent: book_trip
+    examples: |
+      - I want to plan a sustainable trip
+      - help me book an eco friendly journey
+      - plan a trip from Berlin to Amsterdam
+      - I need a low carbon itinerary
+      - book travel from London to Paris
+
+  - intent: request_help
+    examples: |
+      - help
+      - what can you do
+      - show me the help menu
+      - I need help planning
+      - explain NovaPlan
+
+  - intent: request_carbon_info
+    examples: |
+      - calculate my carbon footprint
+      - estimate emissions for train from Berlin to Paris
+      - what is the CO2 for this route
+      - carbon footprint for a flight to Amsterdam
+      - compare emissions for this trip
+
+  - intent: request_eco_hotels
+    examples: |
+      - show eco hotels in Lisbon
+      - find sustainable accommodation
+      - green hotels near Amsterdam
+      - eco certified hotels please
+      - responsible hotel options
+
+  - intent: request_cultural_info
+    examples: |
+      - tell me about Barcelona
+      - cultural tips for Tokyo
+      - destination information for Rome
+      - responsible travel advice for Amsterdam
+      - what should I know before visiting Lisbon
+
+  - intent: request_activities
+    examples: |
+      - show eco activities
+      - sustainable things to do in Paris
+      - green activities in Lisbon
+      - responsible attractions near Barcelona
+      - low impact activities for my trip
+
+  - intent: request_offset_programs
+    examples: |
+      - show carbon offset programs
+      - how can I offset my emissions
+      - compensate my carbon footprint
+      - offset options for this journey
+      - carbon offset schemes
+
+  - intent: request_eco_tips
+    examples: |
+      - give me eco travel tips
+      - how can I travel greener
+      - sustainable travel advice
+      - tips to reduce my footprint
+      - help me make this trip greener
+
+  - intent: affirm
+    examples: |
+      - yes
+      - continue
+      - confirm
+      - looks good
+      - book it
+
+  - intent: deny
+    examples: |
+      - no
+      - cancel
+      - stop
+      - not now
+      - do not continue
+
+  - intent: goodbye
+    examples: |
+      - goodbye
+      - bye
+      - thanks bye
+      - see you
+      - talk later
+
+  - intent: bot_challenge
+    examples: |
+      - are you a bot
+      - who are you
+      - are you human
+      - what assistant are you
+      - is this an AI
+
+  - intent: out_of_scope
+    examples: |
+      - write me a poem
+      - tell me a joke
+      - help me with taxes
+      - what is the stock price
+      - explain quantum physics

@@ -1,0 +1,68 @@
+version: "3.1"
+
+# Information flows 
+flows:
+
+  # Carbon footprint
+  carbon_info:
+    description: >
+      Calculate carbon emissions for a specific route and transport mode.
+      Can be triggered standalone or mid-trip-planning.
+    steps:
+      - action: action_calculate_carbon
+        next: END
+
+  # Eco hotels
+  eco_hotels:
+    description: >
+      Find eco-certified hotels at the destination within budget.
+    steps:
+      - action: action_fetch_eco_hotels
+        next: END
+
+  # Transport options
+  transport_options:
+    description: >
+      Show all transport options between two cities ranked by eco score.
+    steps:
+      - action: action_fetch_travel_options
+        next: END
+
+  # Cultural information
+  cultural_info:
+    description: >
+      Provide cultural tips, responsible tourism guidance, and destination
+      overview using Wikipedia and RestCountries APIs.
+    steps:
+      - collect: destination
+        description: "Destination city or country for cultural tips"
+        ask_before_filling: false
+        next: show_cultural_info
+      - id: show_cultural_info
+        action: action_get_cultural_info
+        next: END
+
+  # Eco tips
+  eco_tips:
+    description: >
+      General sustainable travel advice for the destination.
+    steps:
+      - action: action_get_eco_tips
+        next: END
+
+  # Activities
+  activities:
+    description: >
+      Eco-friendly activities and experiences at the destination.
+    steps:
+      - action: action_get_activities
+        next: END
+
+  # Carbon offset programs
+  offset_programs:
+    description: >
+      Show verified carbon offset schemes for the planned journey.
+    steps:
+      - action: action_get_offset_programs
+        next: END
+

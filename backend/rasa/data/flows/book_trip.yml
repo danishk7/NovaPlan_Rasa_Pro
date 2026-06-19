@@ -1,0 +1,192 @@
+version: "3.1"
+
+flows:
+  book_trip:
+    description: >
+      Plan a sustainable eco-friendly trip. Collect trip details, calculate
+      carbon impact, show a pre-booking review, allow modification, then fetch
+      tickets, hotels, carbon and destination information for the final summary.
+
+    steps:
+      - id: collect_origin
+        collect: origin
+        description: "Departure city"
+        ask_before_filling: false
+        next: collect_destination
+
+      - id: collect_destination
+        collect: destination
+        description: "Destination city; must be different from origin"
+        ask_before_filling: false
+        next: collect_travel_dates
+
+      - id: collect_travel_dates
+        collect: travel_dates
+        description: "Travel date, date range, or relative travel date"
+        ask_before_filling: false
+        next: validate_travel_dates
+
+      - id: validate_travel_dates
+        action: action_validate_travel_date
+        next:
+          - if: "slots.travel_dates == null"
+            then: collect_travel_dates
+          - else: collect_budget_amount
+
+      - id: collect_budget_amount
+        collect: budget_amount
+        description: "Approximate total trip budget in euros"
+        ask_before_filling: true
+        next: collect_num_travellers
+
+      - id: collect_num_travellers
+        collect: num_travellers
+        description: "Number of travellers including the user"
+        ask_before_filling: true
+        next: collect_eco_level
+
+      - id: collect_eco_level
+        collect: eco_level
+        description: "Sustainability preference: low, moderate, or high"
+        ask_before_filling: true
+        next: collect_transport_mode
+
+      - id: collect_transport_mode
+        collect: transport_mode
+        description: "Preferred transport mode: flight, train, bus, car, ferry, walking, or cycling"
+        ask_before_filling: true
+        next: calculate_carbon
+
+      - id: calculate_carbon
+        action: action_calculate_carbon
+        next: show_pre_booking_review
+
+      - id: show_pre_booking_review
+        action: action_review_trip_details
+        next: await_confirmation
+
+      - id: await_confirmation
+        collect: awaiting_review
+        description: "User confirms, modifies, or cancels before live booking search"
+        ask_before_filling: true
+        next:
+          - if: "slots.awaiting_review == 'confirm'"
+            then: fetch_travel_options
+          - if: "slots.awaiting_review == 'modify'"
+            then: collect_modification_choice
+          - if: "slots.awaiting_review == 'cancel'"
+            then: cancel_booking
+          - else: await_confirmation
+
+      - id: collect_modification_choice
+        collect: modification_choice
+        description: "Which trip field the user wants to modify"
+        ask_before_filling: true
+        next:
+          - if: "slots.modification_choice == 'origin'"
+            then: modify_origin
+          - if: "slots.modification_choice == 'destination'"
+            then: modify_destination
+          - if: "slots.modification_choice == 'travel_dates'"
+            then: modify_travel_dates
+          - if: "slots.modification_choice == 'budget_amount'"
+            then: modify_budget_amount
+          - if: "slots.modification_choice == 'num_travellers'"
+            then: modify_num_travellers
+          - if: "slots.modification_choice == 'eco_level'"
+            then: modify_eco_level
+          - if: "slots.modification_choice == 'transport_mode'"
+            then: modify_transport_mode
+          - else: collect_modification_choice
+
+      - id: modify_origin
+        collect: origin
+        description: "Updated departure city"
+        ask_before_filling: true
+        next: calculate_carbon
+
+      - id: modify_destination
+        collect: destination
+        description: "Updated destination city"
+        ask_before_filling: true
+        next: calculate_carbon
+
+      - id: modify_travel_dates
+        collect: travel_dates
+        description: "Updated travel date, date range, or relative travel date"
+        ask_before_filling: true
+        next: validate_modified_travel_dates
+
+      - id: validate_modified_travel_dates
+        action: action_validate_travel_date
+        next:
+          - if: "slots.travel_dates == null"
+            then: modify_travel_dates
+          - else: show_pre_booking_review
+
+      - id: modify_budget_amount
+        collect: budget_amount
+        description: "Updated total trip budget in euros"
+        ask_before_filling: true
+        next: show_pre_booking_review
+
+      - id: modify_num_travellers
+        collect: num_travellers
+        description: "Updated number of travellers including the user"
+        ask_before_filling: true
+        next: calculate_carbon
+
+      - id: modify_eco_level
+        collect: eco_level
+        description: "Updated sustainability preference"
+        ask_before_filling: true
+        next: show_pre_booking_review
+
+      - id: modify_transport_mode
+        collect: transport_mode
+        description: "Updated transport mode"
+        ask_before_filling: true
+        next: calculate_carbon
+
+      - id: fetch_travel_options
+        action: action_fetch_travel_options
+        next: fetch_eco_hotels
+
+      - id: fetch_eco_hotels
+        action: action_fetch_eco_hotels
+        next: fetch_destination_info
+
+      - id: fetch_destination_info
+        action: action_fetch_destination_info
+        next: show_final_trip_summary
+
+      - id: show_final_trip_summary
+        action: action_display_itinerary_summary
+        next: collect_final_booking_decision
+
+      - id: collect_final_booking_decision
+        collect: final_booking_decision
+        description: "User confirms, cancels, modifies, or starts again after reviewing the final trip summary"
+        ask_before_filling: true
+        next:
+          - if: "slots.final_booking_decision == 'confirm'"
+            then: confirm_booking
+          - if: "slots.final_booking_decision == 'modify'"
+            then: collect_modification_choice
+          - if: "slots.final_booking_decision == 'cancel'"
+            then: cancel_booking
+          - if: "slots.final_booking_decision == 'restart'"
+            then: restart_booking
+          - else: collect_final_booking_decision
+
+      - id: confirm_booking
+        action: action_complete_itinerary
+        next: END
+
+      - id: restart_booking
+        action: action_restart
+        next: END
+
+      - id: cancel_booking
+        action: action_cancel_booking
+        next: END

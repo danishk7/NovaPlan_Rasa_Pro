@@ -1,0 +1,333 @@
+{
+  "data_version": "34",
+  "notes": [
+    "Generated from the user's Postman Climatiq /data/v1/search results in climateiq_data.txt.",
+    "Use only activity IDs whose unit_type is PassengerOverDistance or Distance with distance/distance_unit parameters.",
+    "Do not send region_fallback and year_fallback together.",
+    "For estimate payload, data_version must be a string: \"34\"."
+  ],
+  "transport_modes": {
+    "flight": {
+      "default_activity_id": "passenger_flight-route_type_domestic-aircraft_type_na-distance_na-class_na-rf_included-distance_uplift_included",
+      "valid_activity_ids": [
+        {
+          "activity_id": "passenger_flight-route_type_domestic-aircraft_type_na-distance_na-class_na-rf_included-distance_uplift_included",
+          "name": "Domestic flight - with RF effect",
+          "category": "Air Travel",
+          "sector": "Transport",
+          "source": "BEIS",
+          "source_dataset": "Greenhouse gas reporting: conversion factors 2025",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2025,
+          "region": "GB",
+          "region_name": "United Kingdom",
+          "unit_type": "PassengerOverDistance",
+          "unit": "kg/passenger-km",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": true
+        },
+        {
+          "activity_id": "passenger_flight-route_type_domestic-aircraft_type_na-distance_na-class_na-rf_excluded-distance_uplift_included",
+          "name": "Domestic flight - without RF effect",
+          "category": "Air Travel",
+          "sector": "Transport",
+          "source": "BEIS",
+          "source_dataset": "Greenhouse gas reporting: conversion factors 2025",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2025,
+          "region": "GB",
+          "region_name": "United Kingdom",
+          "unit_type": "PassengerOverDistance",
+          "unit": "kg/passenger-km",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": true
+        }
+      ]
+    },
+    "train": {
+      "default_activity_id": "passenger_train-route_type_na-fuel_source_na",
+      "valid_activity_ids": [
+        {
+          "activity_id": "passenger_train-route_type_na-fuel_source_na",
+          "name": "Train (passengers)",
+          "category": "Rail Travel",
+          "sector": "Transport",
+          "source": "ADEME",
+          "source_dataset": "Base Carbone v23.9",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2022,
+          "region": "FR-20R",
+          "region_name": "Corsica, FR",
+          "unit_type": "PassengerOverDistance",
+          "unit": "kg/passenger-km",
+          "supported_calculation_methods": [
+            "ar6"
+          ],
+          "distance_payload_supported": true
+        }
+      ]
+    },
+    "bus": {
+      "default_activity_id": "",
+      "valid_activity_ids": [
+        {
+          "activity_id": "transport_services-type_interurban_and_rural_bus_passenger_transportation_services",
+          "name": "Interurban and rural bus passenger transportation services",
+          "category": "Transport Services and Warehousing",
+          "sector": "Transport",
+          "source": "OpenIO-Canada",
+          "source_dataset": "OpenIO v2.11",
+          "source_lca_activity": "cradle_to_gate_inc_capital_endogenization",
+          "year": 2022,
+          "region": "CA-NT",
+          "region_name": "Northwest Territories, CA",
+          "unit_type": "Money",
+          "unit": "kg/cad",
+          "supported_calculation_methods": [
+            "ar6"
+          ],
+          "distance_payload_supported": false
+        }
+      ]
+    },
+    "car": {
+      "default_activity_id": "passenger_vehicle-vehicle_type_car-fuel_source_fcev-distance_na-engine_size_na",
+      "valid_activity_ids": [
+        {
+          "activity_id": "passenger_vehicle-vehicle_type_car-fuel_source_na-engine_size_na-vehicle_age_na-vehicle_weight_na",
+          "name": "Passenger car",
+          "category": "Vehicles",
+          "sector": "Transport",
+          "source": "EPA",
+          "source_dataset": "2025 GHG Emission Factors Hub",
+          "source_lca_activity": "use_phase",
+          "year": 2025,
+          "region": "US",
+          "region_name": "United States of America (the)",
+          "unit_type": "Distance",
+          "unit": "kg/mile",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": true
+        },
+        {
+          "activity_id": "fuel-type_lpg-fuel_use_mobile_passenger_cars",
+          "name": "LPG - passenger cars (M1)",
+          "category": "Fuel",
+          "sector": "Energy",
+          "source": "MITECO",
+          "source_dataset": "Factores de Emision 2025",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2024,
+          "region": "ES",
+          "region_name": "Spain",
+          "unit_type": "Volume",
+          "unit": "kg/l",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": false
+        },
+        {
+          "activity_id": "fuel-type_cng-fuel_use_mobile_passenger_cars",
+          "name": "CNG - passenger cars (M1)",
+          "category": "Fuel",
+          "sector": "Energy",
+          "source": "MITECO",
+          "source_dataset": "Factores de Emision 2025",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2024,
+          "region": "ES",
+          "region_name": "Spain",
+          "unit_type": "Weight",
+          "unit": "kg/kg",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": false
+        },
+        {
+          "activity_id": "fuel-type_adblue-fuel_use_mobile_passenger_cars",
+          "name": "AdBlue - passenger cars (M1)",
+          "category": "Fuel",
+          "sector": "Energy",
+          "source": "MITECO",
+          "source_dataset": "Factores de Emision 2025",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2024,
+          "region": "ES",
+          "region_name": "Spain",
+          "unit_type": "Volume",
+          "unit": "kg/l",
+          "supported_calculation_methods": [
+            "ar6"
+          ],
+          "distance_payload_supported": false
+        },
+        {
+          "activity_id": "passenger_vehicle-vehicle_type_car-fuel_source_fcev-distance_na-engine_size_na",
+          "name": "Hydrogen passenger car",
+          "category": "Road Travel",
+          "sector": "Transport",
+          "source": "UBA",
+          "source_dataset": "ProBas",
+          "source_lca_activity": "upstream-fuel_combustion",
+          "year": 2020,
+          "region": "DE",
+          "region_name": "Germany",
+          "unit_type": "PassengerOverDistance",
+          "unit": "kg/passenger-km",
+          "supported_calculation_methods": [
+            "ar4"
+          ],
+          "distance_payload_supported": true
+        },
+        {
+          "activity_id": "passenger_ferry-route_type_car_passenger-fuel_source_na",
+          "name": "Ferry (passenger with car)",
+          "category": "Sea Travel",
+          "sector": "Transport",
+          "source": "BEIS",
+          "source_dataset": "Greenhouse gas reporting: conversion factors 2025",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2025,
+          "region": "GB",
+          "region_name": "United Kingdom",
+          "unit_type": "PassengerOverDistance",
+          "unit": "kg/passenger-km",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": true
+        },
+        {
+          "activity_id": "passenger_vehicle-vehicle_type_passenger_cars-fuel_source_lpg-engine_size_na-vehicle_age_na-vehicle_weight_na",
+          "name": "LPG - passenger cars (M1)",
+          "category": "Road Travel",
+          "sector": "Transport",
+          "source": "MITECO",
+          "source_dataset": "Factores de Emision 2025",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2024,
+          "region": "ES",
+          "region_name": "Spain",
+          "unit_type": "Distance",
+          "unit": "kg/km",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": true
+        }
+      ]
+    },
+    "taxi": {
+      "default_activity_id": "passenger_vehicle-vehicle_type_taxi-fuel_source_na-distance_na-engine_size_na",
+      "valid_activity_ids": [
+        {
+          "activity_id": "passenger_vehicle-vehicle_type_taxi-fuel_source_na-distance_na-engine_size_na",
+          "name": "Regular taxi",
+          "category": "Road Travel",
+          "sector": "Transport",
+          "source": "BEIS",
+          "source_dataset": "Greenhouse gas reporting: conversion factors 2025",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2025,
+          "region": "GB",
+          "region_name": "United Kingdom",
+          "unit_type": "PassengerOverDistance",
+          "unit": "kg/passenger-km",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": true
+        },
+        {
+          "activity_id": "passenger_vehicle-vehicle_type_taxi-fuel_source_na-engine_size_na-vehicle_age_na-vehicle_weight_na",
+          "name": "Taxi travel",
+          "category": "Vehicles",
+          "sector": "Transport",
+          "source": "MfE",
+          "source_dataset": "Measuring emissions: A guide for organisations (2025)",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2025,
+          "region": "NZ",
+          "region_name": "New Zealand",
+          "unit_type": "Distance",
+          "unit": "kg/km",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": true
+        }
+      ]
+    },
+    "ferry": {
+      "default_activity_id": "passenger_ferry-route_type_na-fuel_source_na",
+      "valid_activity_ids": [
+        {
+          "activity_id": "passenger_ferry-route_type_foot_passenger-fuel_source_na",
+          "name": "Ferry (foot passenger)",
+          "category": "Sea Travel",
+          "sector": "Transport",
+          "source": "BEIS",
+          "source_dataset": "Greenhouse gas reporting: conversion factors 2025",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2025,
+          "region": "GB",
+          "region_name": "United Kingdom",
+          "unit_type": "PassengerOverDistance",
+          "unit": "kg/passenger-km",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": true
+        },
+        {
+          "activity_id": "passenger_ferry-route_type_na-fuel_source_na",
+          "name": "Ferry (average per passenger)",
+          "category": "Sea Travel",
+          "sector": "Transport",
+          "source": "BEIS",
+          "source_dataset": "Greenhouse gas reporting: conversion factors 2025",
+          "source_lca_activity": "fuel_combustion",
+          "year": 2025,
+          "region": "GB",
+          "region_name": "United Kingdom",
+          "unit_type": "PassengerOverDistance",
+          "unit": "kg/passenger-km",
+          "supported_calculation_methods": [
+            "ar4",
+            "ar5",
+            "ar6"
+          ],
+          "distance_payload_supported": true
+        }
+      ]
+    }
+  }
+}

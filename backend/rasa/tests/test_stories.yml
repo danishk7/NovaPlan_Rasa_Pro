@@ -1,0 +1,45 @@
+version: "3.1"
+
+stories:
+  - story: greet help goodbye compatibility smoke
+    steps:
+      - intent: request_help
+      - action: utter_help
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: carbon information compatibility smoke
+    steps:
+      - intent: request_carbon_info
+      - action: action_calculate_carbon
+
+  - story: eco hotels compatibility smoke
+    steps:
+      - intent: request_eco_hotels
+      - action: action_fetch_eco_hotels
+
+  - story: cultural information compatibility smoke
+    steps:
+      - intent: request_cultural_info
+      - action: action_get_cultural_info
+
+  - story: human handover compatibility smoke
+    steps:
+      - intent: request_help
+      - action: utter_help
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+
+  - story: book trip classic compatibility outline
+    steps:
+      - intent: book_trip
+      - action: action_validate_travel_date
+      - action: action_calculate_carbon
+      - action: action_review_trip_details
+      - intent: affirm
+      - action: action_fetch_travel_options
+      - action: action_fetch_eco_hotels
+      - action: action_fetch_destination_info
+      - action: action_display_itinerary_summary
+      - intent: affirm
+      - action: action_complete_itinerary
