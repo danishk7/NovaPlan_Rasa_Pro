@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --color-nova-dark: #004d2c;
+  --color-nova-base: #006838;
+  --color-nova-light: #059669;
+  --color-nova-eco: #98eb8c;
+  
+  @keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  --animate-gradient-x: gradient-x 15s ease infinite;
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.8; scale: 1; }
+    50% { opacity: 1; scale: 1.05; }
+  }
+  --animate-pulse-slow: pulse-slow 8s ease-in-out infinite;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #f8faf9;
+  color: #111827;
+  font-family: var(--font-sans);
+}
+
+.custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); border-radius: 10px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.2); }
+
+/* Glassmorphism Variants */
+.glass-white {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nova-button-gradient {
+  background: linear-gradient(135deg, #006838 0%, #059669 100%);
+}
